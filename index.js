@@ -6,7 +6,9 @@ let end_point = `data/2.5/weather?q=London&appid=`
 
 let api_url = b_url+end_point+key
 
-let week_url = ``
+let week_endpoint =  `data/2.5/forecast`
+
+let week_url = b_url+end_point+`?q=London`+key
 
 // let url = `http://api.openweathermap.org/data/2.5/weather?q=London&appid=effa31e218ecf5fd73ce7c877c45a11a`
 
@@ -19,6 +21,16 @@ function getweather(api_url){
     .then((data) => {
         console.log(data)
         showWeather(data)
+    })
+
+}
+
+function showWeatherweek(week_url){
+
+    fetch(week_url)
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data)
     })
 
 }
@@ -60,6 +72,13 @@ function showWeather(data){
     </div>
 
     `
+
+}
+
+function showWeatherweek(){
+
+    showWeatherweek.innerHTML = ""
+    
 
 }
 
